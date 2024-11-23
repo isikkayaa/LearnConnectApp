@@ -26,7 +26,22 @@ interface KisilerDao  {
     suspend fun tumKisiler(): List<Kisiler>
 
 
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
+
+
+
+
+  /*  @Query("SELECT * FROM kisiler")
+    fun tumKisilerFlow() : Flow<List<Kisiler>>
+
+   */
+
+ /*   @Query("SELECT count(*) FROM kisiler WHERE kisi_username =: kisi_username")
+    suspend fun kayitKontrol(kisi_username:String) : Int
+
+
+  */
+
+    @Insert
     suspend fun kaydet(kisi:Kisiler)
 
 

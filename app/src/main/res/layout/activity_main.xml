@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.drawerlayout.widget.DrawerLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/drawerLayout"
@@ -8,9 +9,10 @@
     tools:context=".MainActivity"
     tools:openDrawer="start">
 
+    <!-- Main content: FragmentContainerView with BottomNavigationView -->
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
@@ -38,9 +40,8 @@
         <com.google.android.material.bottomnavigation.BottomNavigationView
             android:id="@+id/bottomNavigationView"
             android:layout_width="414dp"
-            android:layout_height="48dp"
+            android:layout_height="58dp"
             android:layout_gravity="bottom"
-            android:background="@color/bottomNavigationBackground"
             app:itemTextColor="#757575"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -56,6 +57,7 @@
         android:layout_gravity="start"
         android:backgroundTint="?attr/colorOnBackground"
         app:menu="@menu/navigation_drawer" />
+
 
 
 </androidx.drawerlayout.widget.DrawerLayout>

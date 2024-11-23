@@ -7,9 +7,10 @@ import kotlinx.coroutines.withContext
 
 class KurslarDataSource(var kurslarDao: KurslarDao) {
 
-    suspend fun kurslariYukle(kursId:Int) : List<Kurslar> =
+   /* suspend fun kurslariYukle() : List<Kurslar> =
         withContext(Dispatchers.IO) {
-            return@withContext kurslarDao.kurslariYukle(kursId)
+            return@withContext kurslarDao.kurslariYukle()
         }
 
+    */
 }

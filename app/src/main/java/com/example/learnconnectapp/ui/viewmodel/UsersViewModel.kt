@@ -24,10 +24,6 @@ class UsersViewModel @Inject constructor(private val repository: KisilerReposito
     private val _userCourses = MutableLiveData<List<Kisiler>>()
     val userCourses: LiveData<List<Kisiler>> get() = _userCourses
 
-    init {
-        firebaseAuth = FirebaseAuth.getInstance()
-    }
-
     fun registerUser(username: String, email: String, password: String) {
         viewModelScope.launch {
             val user = Kisiler(
@@ -51,20 +47,13 @@ class UsersViewModel @Inject constructor(private val repository: KisilerReposito
         firebaseAuth.signInWithEmailAndPassword(email, password)
             .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
-                    viewModelScope.launch {
-                        val user = repository.loginUser(email, password)
-                        user?.let {
-                            _loginResult.postValue(true)
-                            _userCourses.postValue(listOf(it))
-                        } ?: run {
-                            _loginResult.postValue(false)
-                        }
-                    }
+                    _loginResult.postValue(true)
                 } else {
                     _loginResult.postValue(false)
                 }
             }
     }
+
     fun signOut() {
         firebaseAuth.signOut()
         _loginResult.postValue(false)

@@ -4,15 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.fragment.LoginFragment"
-    android:paddingBottom="0dp">
+    tools:context=".ui.fragment.LoginFragment" >
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout"
         android:layout_width="416dp"
         android:layout_height="179dp"
         android:background="@color/arkaplan"
-        android:backgroundTint="#BCBCBC"
+        android:backgroundTint="@color/belirgin"
         app:layout_constraintBottom_toTopOf="@+id/constraintLayout2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -24,7 +23,7 @@
             android:layout_height="87dp"
             android:fontFamily="@font/playfair_display"
             android:text="@string/SignIntoYourAccount"
-            android:textColor="#D22F2F"
+            android:textColor="@color/anaRenkKoyu"
             android:textSize="34sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

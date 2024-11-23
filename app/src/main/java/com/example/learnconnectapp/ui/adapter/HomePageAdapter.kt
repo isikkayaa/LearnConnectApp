@@ -8,7 +8,6 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
 import com.example.learnconnectapp.R
 import com.example.learnconnectapp.data.entity.FavoriKurslar
 import com.example.learnconnectapp.data.entity.ImageLinks
@@ -23,6 +22,8 @@ class HomePageAdapter(
     var mContext: Context,
     var kurslarListesi: List<Kurslar>,
     var favoriKurslar: List<FavoriKurslar>,
+ //   var okunanKitaplarListesi: List<VolumeInfo>,
+   // var okunacakKitaplarListesi: List<VolumeInfo>,
     var viewModel: HomePageViewModel, var fragmentType: String
 ) : RecyclerView.Adapter<HomePageAdapter.CardTasarimTutucu>() {
 
@@ -48,6 +49,7 @@ class HomePageAdapter(
         t.kursNesnesi = kurs
 
 
+
         val isFavourited = favoriKurslar.any { it.fav_kurs_isim == kurs.kurs_isim }
 
 
@@ -57,11 +59,46 @@ class HomePageAdapter(
             t.imageViewkalpborder.setImageResource(R.drawable.baseline_favorite_border_24)
         }
 
-       holder.tasarim.gorsel = kurs.kurs_gorsel
+      /*  holder.tasarim.imageView5.setOnClickListener {
+
+
+            viewModel.addBookToReadList(kitap) { success ->
+                val context = t.imageView5.context
+                if (success) {
+                    Snackbar.make(it, context.getString(R.string.add_to_read_list_success, kitap.title), Snackbar.LENGTH_SHORT).show()
+                    viewModel.fetchokunanBooks()
+
+                    readBooks(okunanKitaplarListesi)
+
+                }
+            }
+
+
+        }
+
+
+        holder.tasarim.imageViewList.setOnClickListener {
+            viewModel.addBookToReadingList(kitap) { success ->
+                val context = t.imageViewList.context
+                if (success) {
+                    Snackbar.make(it, context.getString(R.string.add_to_reading_list_success, kitap.title), Snackbar.LENGTH_SHORT).show()
+                    readingBooks(okunacakKitaplarListesi)
+
+
+                }
+
+            }
+        }
+
+       */
+
+      //  holder.tasarim.gorsel = kitap.imageLinks
         holder.tasarim.kursNesnesi = kurs
 
 
         holder.tasarim.textView8.text = kurs.kurs_isim
+        //holder.tasarim.textView9.text = kitap.authors?.joinToString(" , ") ?: "Unknown Author"
+
 
         val thumbnailUrl = kurs.kurs_gorsel?.thumbnail
         if (kurs.kurs_gorsel?.thumbnail.isNullOrEmpty()) {
@@ -71,15 +108,21 @@ class HomePageAdapter(
         }
 
 
-        if (thumbnailUrl != null && thumbnailUrl.isNotBlank()) {
+      /*  if (thumbnailUrl != null && thumbnailUrl.isNotBlank()) {
             Glide.with(holder.itemView.context)
                 .load(thumbnailUrl)
-                .placeholder(R.drawable.baseline_list_24)
+                .placeholder(R.drawable.baseline_menu_book_24)
                 .error(R.drawable.baseline_list_24)
                 .into(holder.tasarim.imageViewKitapGorsel)
         } else {
-            holder.tasarim.imageViewKitapGorsel.setImageResource(R.drawable.baseline_download_24)
+            holder.tasarim.imageViewKitapGorsel.setImageResource(R.drawable.baseline_menu_book_24)
         }
+
+
+
+
+       */
+
 
 
         t.cardViewSatir.setOnClickListener {
@@ -91,8 +134,19 @@ class HomePageAdapter(
                     )
                     Navigation.gecisYap(it, gecis)
                 }
+             /*   "SearchFragment" -> {
+                    val geciss = SearchFragmentDirections.actionSearchFragmentToBookDetailFragment(
+                        kitap = kitap,
+                        gorsel = kitap.imageLinks ?: ImageLinks(thumbnail = null, smallThumbnail = null)
+                    )
+                    Navigation.gecisYap(it, geciss)
+                }
+            }
 
+              */
         }
+
+
 
 /*
         t.imageViewkalpborder.setOnClickListener {
@@ -123,13 +177,11 @@ class HomePageAdapter(
  */
 
 
-
-
-
-}}
-
     @SuppressLint("NotifyDataSetChanged")
-    fun updateKurslar(newKurslar: List<Kurslar>) {
-        kurslarListesi = newKurslar
+    fun updateFavorites(newFavorites: List<FavoriKurslar>) {
+        favoriKurslar = newFavorites
         notifyDataSetChanged()
-    }}
+    }
+
+
+}}}

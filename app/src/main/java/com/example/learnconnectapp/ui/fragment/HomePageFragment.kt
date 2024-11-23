@@ -13,7 +13,6 @@ import androidx.databinding.BindingAdapter
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
-import com.bumptech.glide.Glide
 import com.example.learnconnectapp.R
 import com.example.learnconnectapp.databinding.FragmentHomePageBinding
 import com.example.learnconnectapp.room.KurslarDao
@@ -84,12 +83,13 @@ class HomePageFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-       homePageViewModel.kurslariYukle(1)
+        // homePageViewModel.fetchTrendingBooks()
     }
 
     override fun onResume() {
         super.onResume()
-        homePageViewModel.kurslariYukle(1)
+
+        //     homePageViewModel.fetchTrendingBooks()
     }
 
     private fun setupRecyclerView() {
@@ -110,12 +110,13 @@ class HomePageFragment : Fragment() {
 
 
     private fun observeViewModel() {
-        homePageViewModel.kurslarListesi.observe(viewLifecycleOwner) { kurslar ->
-            kurslar?.let {
-                homePageAdapter.updateKurslar(it) } }
-        homePageViewModel.searchResults.observe(viewLifecycleOwner) { results ->
-            results?.let {
-                homePageAdapter.updateKurslar(it) } }
+        /* homePageViewModel.trendingBooks.observe(viewLifecycleOwner) { books ->
+            books?.let {
+                homePageAdapter.updateBooks(it)
+            }
+        }
+
+        */
     }
 
 
@@ -137,17 +138,19 @@ class HomePageFragment : Fragment() {
         @BindingAdapter("imageUrl")
         fun loadImage(view: ImageView, imageUrl: String?) {
             if (!imageUrl.isNullOrEmpty()) {
-                Glide.with(view.context)
+                /* Glide.with(view.context)
                     .load(imageUrl)
-                    .placeholder(R.drawable.baseline_list_24) // Varsayılan görsel
+                    .placeholder(R.drawable.baseline_menu_book_24) // Varsayılan görsel
                     .error(R.drawable.baseline_list_24) // Hata durumunda gösterilecek görsel
                     .into(view)
             } else {
-                view.setImageResource(R.drawable.baseline_download_24) // Eğer resim yoksa varsayılan görseli göster
+                view.setImageResource(R.drawable.baseline_menu_book_24) // Eğer resim yoksa varsayılan görseli göster
             }
         }
 
+                */
 
-
+            }
+        }
     }
 }

@@ -8,7 +8,6 @@ import androidx.databinding.DataBindingUtil
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
 import com.example.learnconnectapp.R
 import com.example.learnconnectapp.data.entity.Comments
 import com.example.learnconnectapp.data.entity.ImageLinks
@@ -18,7 +17,7 @@ import com.example.learnconnectapp.ui.fragment.ProfileFragmentDirections
 import com.example.learnconnectapp.ui.viewmodel.ProfileViewModel
 import com.example.learnconnectapp.util.gecisYap
 
-class CommentsAdapter(var mContext: Context, var yorumListesi : List<Comments>, var comments:List<Comments>, var viewModel: ProfileViewModel) : RecyclerView.Adapter<CommentsAdapter.CardCommentsTasarimTutucu>() {
+class CommentsAdapter(var mContext: Context, var yorumListesi : List<Comments>, var yorumlananKitaplarListesi: List<Comments>, var comments:List<Comments>, var viewModel: ProfileViewModel) : RecyclerView.Adapter<CommentsAdapter.CardCommentsTasarimTutucu>() {
 
 
     inner class CardCommentsTasarimTutucu(var tasarim : CardCommentsTasarimBinding) : RecyclerView.ViewHolder(tasarim.root)
@@ -37,7 +36,7 @@ class CommentsAdapter(var mContext: Context, var yorumListesi : List<Comments>, 
         val t = holder.tasarim
 
         t.yorumNesnesi = yorum
-        val isRemoved = yorumListesi.any {it.courseTitle == yorum.courseTitle}
+        val isRemoved = yorumlananKitaplarListesi.any {it.courseTitle == yorum.courseTitle}
 
 
         //  holder.tasarim.gorsel = yorum.imageLinks?????
@@ -46,18 +45,19 @@ class CommentsAdapter(var mContext: Context, var yorumListesi : List<Comments>, 
 
         holder.tasarim.textView17.text = yorum.userComment
 
-        t.ratingBar.rating = yorum.rating.toFloat()
+        t.ratingBar.rating = yorum.rating
 
 
         if (yorum.courseImageUrl != null) {
-             Glide.with(mContext)
-                .load(yorum.courseImageUrl)
-                .placeholder(R.drawable.baseline_list_24)
+            /*Glide.with(mContext)
+                .load(yorum.bookImageUrl)
+                .placeholder(R.drawable.baseline_menu_book_24)
                 .error(R.drawable.baseline_list_24)
                 .into(holder.tasarim.imageView2)
 
+             */
         } else {
-            holder.tasarim.imageView2.setImageResource(R.drawable.baseline_download_24)
+            holder.tasarim.imageView2.setImageResource(R.drawable.baseline_menu_24)
         }
 
         t.cardViewComments.setOnClickListener {
@@ -136,8 +136,8 @@ class CommentsAdapter(var mContext: Context, var yorumListesi : List<Comments>, 
 
 
     @SuppressLint("NotifyDataSetChanged")
-    fun updateComments(newComments : List<Comments>) {
-        yorumListesi = newComments
+    fun commentBooks(yorumlananKitaplar : List<Comments>) {
+        yorumlananKitaplarListesi = yorumlananKitaplar
         notifyDataSetChanged()
     }
 

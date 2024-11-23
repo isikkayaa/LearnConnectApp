@@ -72,7 +72,6 @@ dependencies {
     implementation("androidx.navigation:navigation-ui-ktx:2.7.7")
     implementation("androidx.preference:preference:1.2.1")
     implementation("com.google.firebase:firebase-auth-ktx:23.1.0")
-    implementation("com.google.firebase:firebase-firestore-ktx:25.1.1")
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
@@ -92,9 +91,6 @@ dependencies {
 
     implementation("com.google.firebase:firebase-analytics")
 
-    implementation("com.google.code.gson:gson:2.10.1")
-    implementation("com.github.bumptech.glide:glide:4.13.2")
-    implementation("com.google.android.exoplayer:exoplayer:2.19.1")
 
 
 

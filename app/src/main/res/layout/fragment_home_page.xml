@@ -19,14 +19,14 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent" >
 
         <androidx.appcompat.widget.SearchView
             android:id="@+id/searchView"
             android:layout_width="388dp"
             android:layout_height="50dp"
             android:layout_margin="10dp"
-            android:layout_marginTop="36dp"
+            android:layout_marginTop="26dp"
             android:background="#E6E6E6"
             android:elevation="10dp"
             android:queryHint="Find books!"
@@ -37,18 +37,21 @@
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvHomePage"
-            android:layout_width="389dp"
-            android:layout_height="587dp"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="30dp"
             android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
             android:clipToPadding="false"
             android:orientation="vertical"
             android:paddingBottom="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/searchView"
+            app:layout_constraintVertical_bias="1.0"
             tools:listitem="@layout/card_tasarim" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

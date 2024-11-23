@@ -72,9 +72,6 @@
         <argument
             android:name="gorsel"
             app:argType="com.example.learnconnectapp.data.entity.ImageLinks" />
-        <action
-            android:id="@+id/action_courseDetailFragment_to_videoPlayerFragment"
-            app:destination="@id/videoPlayerFragment" />
     </fragment>
     <fragment
         android:id="@+id/downloadFragment2"
@@ -129,17 +126,5 @@
             android:id="@+id/action_favouritesFragment2_to_homePageFragment"
             app:destination="@id/homePageFragment" />
 
-    </fragment>
-    <fragment
-        android:id="@+id/videoPlayerFragment"
-        android:name="com.example.learnconnectapp.ui.fragment.VideoPlayerFragment"
-        android:label="VideoPlayerFragment" >
-        <argument android:name="userId" app:argType="integer" />
-        <argument android:name="courseId" app:argType="integer" />
-        <argument android:name="videoId" app:argType="integer" />
-        <argument android:name="videoUrl" app:argType="string"/>
-        <action
-            android:id="@+id/action_videoPlayerFragment_to_courseDetailFragment"
-            app:destination="@id/courseDetailFragment" />
     </fragment>
 </navigation>

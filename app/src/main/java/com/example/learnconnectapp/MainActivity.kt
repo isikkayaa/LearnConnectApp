@@ -76,18 +76,19 @@ class MainActivity : AppCompatActivity() {
             if (destination.id in listOf(R.id.signUpFragment, R.id.loginFragment)) {
                 binding.toolbar.visibility = View.GONE
                 drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED)
-                binding.bottomNavigationView.visibility = View.GONE
-
             } else {
                 binding.toolbar.visibility = View.VISIBLE
                 drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED)
-                binding.bottomNavigationView.visibility = View.VISIBLE
                 binding.toolbar.title = when (destination.id) {
                     R.id.courseDetailFragment -> getString(R.string.course_detail)
                     else -> ""
                 }
 
-
+                bottomNavigationView.visibility = if (destination.id in listOf(R.id.signUpFragment, R.id.loginFragment)) {
+                    View.GONE
+                } else {
+                    View.VISIBLE
+                }
 
 
             }

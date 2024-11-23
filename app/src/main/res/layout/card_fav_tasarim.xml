@@ -55,7 +55,7 @@
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="20dp"
                     android:fontFamily="@font/playfair_display"
-                    android:text="@{favKursNesnesi.fav_kurs_isim}"
+                    android:text="@{favKitapNesnesi.fav_kurs_isim}"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
             </androidx.constraintlayout.widget.ConstraintLayout>
