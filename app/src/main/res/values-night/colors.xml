@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="anaRenk">#8a6d87</color>
+    <color name="anaRenkKoyu">#5b4256</color>
+    <color name="arkaplan">#1c1b1f</color>
+    <color name="belirgin">#b39c9f</color>
+    <color name="acık">#303030</color>
+    <color name="navDrawerBackground">#333333</color>
+
+</resources>

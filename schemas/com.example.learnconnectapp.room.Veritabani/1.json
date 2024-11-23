@@ -1,0 +1,114 @@
+{
+  "formatVersion": 1,
+  "database": {
+    "version": 1,
+    "identityHash": "954f85687095ae539147345ca9dd03f6",
+    "entities": [
+      {
+        "tableName": "kisiler",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`kisi_id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `kisi_username` TEXT NOT NULL, `kisi_email` TEXT NOT NULL, `kisi_sifre` TEXT NOT NULL, `kisi_kurs_isim` TEXT NOT NULL, `kisi_video_ilerleme` INTEGER NOT NULL, `kisi_fav_kurs` TEXT NOT NULL, `kisi_kurs_yorum` TEXT NOT NULL, `kisi_kurs_puan` INTEGER NOT NULL, `kisi_kurs_indirme` TEXT NOT NULL)",
+        "fields": [
+          {
+            "fieldPath": "kisi_id",
+            "columnName": "kisi_id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "kisi_username",
+            "columnName": "kisi_username",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "kisi_email",
+            "columnName": "kisi_email",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "kisi_sifre",
+            "columnName": "kisi_sifre",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "kisi_kurs_isim",
+            "columnName": "kisi_kurs_isim",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "kisi_video_ilerleme",
+            "columnName": "kisi_video_ilerleme",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "kisi_fav_kurs",
+            "columnName": "kisi_fav_kurs",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "kisi_kurs_yorum",
+            "columnName": "kisi_kurs_yorum",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "kisi_kurs_puan",
+            "columnName": "kisi_kurs_puan",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "kisi_kurs_indirme",
+            "columnName": "kisi_kurs_indirme",
+            "affinity": "TEXT",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": true,
+          "columnNames": [
+            "kisi_id"
+          ]
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "kurslar",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`kurs_id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `kurs_isim` TEXT NOT NULL)",
+        "fields": [
+          {
+            "fieldPath": "kurs_id",
+            "columnName": "kurs_id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "kurs_isim",
+            "columnName": "kurs_isim",
+            "affinity": "TEXT",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": true,
+          "columnNames": [
+            "kurs_id"
+          ]
+        },
+        "indices": [],
+        "foreignKeys": []
+      }
+    ],
+    "views": [],
+    "setupQueries": [
+      "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '954f85687095ae539147345ca9dd03f6')"
+    ]
+  }
+}
