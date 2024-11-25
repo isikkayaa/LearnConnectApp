@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav"
+    app:startDestination="@id/loginFragment">
+
+
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.example.learnconnectapp.ui.fragment.LoginFragment"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login" >
+        <action
+            android:id="@+id/signupaGecis"
+            app:destination="@id/signUpFragment" />
+        <action
+            android:id="@+id/action_loginFragment_to_homePageFragment"
+            app:destination="@id/homePageFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/signUpFragment"
+        android:name="com.example.learnconnectapp.ui.fragment.SignUpFragment"
+        android:label="fragment_sign_up"
+        tools:layout="@layout/fragment_sign_up" >
+        <action
+            android:id="@+id/action_signUpFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+
+    </fragment>
+
+
+    <fragment
+        android:id="@+id/homePageFragment"
+        android:name="com.example.learnconnectapp.ui.fragment.HomePageFragment"
+        android:label="HomePageFragment" >
+        <action
+            android:id="@+id/detayGecis"
+            app:destination="@id/courseDetailFragment" />
+        <action
+            android:id="@+id/action_homePageFragment_to_favouritesFragment2"
+            app:destination="@id/favouritesFragment2" />
+        <action
+            android:id="@+id/action_homePageFragment_to_downloadFragment2"
+            app:destination="@id/downloadFragment2" />
+        <action
+            android:id="@+id/action_homePageFragment_to_profileFragment2"
+            app:destination="@id/profileFragment2" />
+    </fragment>
+    <fragment
+        android:id="@+id/courseDetailFragment"
+        android:name="com.example.learnconnectapp.ui.fragment.CourseDetailFragment"
+        android:label="CourseDetailFragment" >
+        <action
+            android:id="@+id/action_courseDetailFragment_to_profileFragment2"
+            app:destination="@id/profileFragment2" />
+        <action
+            android:id="@+id/action_courseDetailFragment_to_favouritesFragment2"
+            app:destination="@id/favouritesFragment2" />
+        <action
+            android:id="@+id/action_courseDetailFragment_to_downloadFragment2"
+            app:destination="@id/downloadFragment2" />
+        <action
+            android:id="@+id/action_courseDetailFragment_to_homePageFragment"
+            app:destination="@id/homePageFragment" />
+        <action
+            android:id="@+id/action_courseDetailFragment_to_homePageFragment2"
+            app:destination="@id/homePageFragment" />
+        <argument
+            android:name="kurs"
+            app:argType="com.example.learnconnectapp.data.entity.Kurslar" />
+        <argument
+            android:name="gorsel"
+            app:argType="com.example.learnconnectapp.data.entity.ImageLinks" />
+        <action
+            android:id="@+id/action_courseDetailFragment_to_videoPlayerFragment"
+            app:destination="@id/videoPlayerFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/downloadFragment2"
+        android:name="com.example.learnconnectapp.ui.fragment.DownloadFragment"
+        android:label="fragment_download"
+        tools:layout="@layout/fragment_download" >
+        <action
+            android:id="@+id/action_downloadFragment2_to_courseDetailFragment"
+            app:destination="@id/courseDetailFragment" />
+        <action
+            android:id="@+id/action_downloadFragment2_to_favouritesFragment2"
+            app:destination="@id/favouritesFragment2" />
+        <action
+            android:id="@+id/action_downloadFragment2_to_profileFragment2"
+            app:destination="@id/profileFragment2" />
+        <action
+            android:id="@+id/action_downloadFragment2_to_homePageFragment"
+            app:destination="@id/homePageFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/profileFragment2"
+        android:name="com.example.learnconnectapp.ui.fragment.ProfileFragment"
+        android:label="ProfileFragment" >
+        <action
+            android:id="@+id/action_profileFragment2_to_favouritesFragment2"
+            app:destination="@id/favouritesFragment2" />
+        <action
+            android:id="@+id/action_profileFragment2_to_courseDetailFragment"
+            app:destination="@id/courseDetailFragment" />
+        <action
+            android:id="@+id/action_profileFragment2_to_downloadFragment2"
+            app:destination="@id/downloadFragment2" />
+        <action
+            android:id="@+id/action_profileFragment2_to_homePageFragment"
+            app:destination="@id/homePageFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/favouritesFragment2"
+        android:name="com.example.learnconnectapp.ui.fragment.FavouritesFragment"
+        android:label="fragment_favourites"
+        tools:layout="@layout/fragment_favourites" >
+        <action
+            android:id="@+id/action_favouritesFragment2_to_profileFragment2"
+            app:destination="@id/profileFragment2" />
+        <action
+            android:id="@+id/action_favouritesFragment2_to_downloadFragment2"
+            app:destination="@id/downloadFragment2" />
+        <action
+            android:id="@+id/action_favouritesFragment2_to_courseDetailFragment"
+            app:destination="@id/courseDetailFragment" />
+        <action
+            android:id="@+id/action_favouritesFragment2_to_homePageFragment"
+            app:destination="@id/homePageFragment" />
+
+    </fragment>
+    <fragment
+        android:id="@+id/videoPlayerFragment"
+        android:name="com.example.learnconnectapp.ui.fragment.VideoPlayerFragment"
+        android:label="VideoPlayerFragment" >
+        <argument android:name="userId" app:argType="integer" />
+        <argument android:name="courseId" app:argType="integer" />
+        <argument android:name="videoId" app:argType="integer" />
+        <argument android:name="videoUrl" app:argType="string"/>
+        <action
+            android:id="@+id/action_videoPlayerFragment_to_courseDetailFragment"
+            app:destination="@id/courseDetailFragment" />
+    </fragment>
+</navigation>

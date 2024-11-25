@@ -1,0 +1,22 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <style name="Base.Theme.LearnConnectApp" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/anaRenk</item>
+        <item name="colorPrimaryVariant">@color/anaRenkKoyu</item>
+        <item name="colorOnPrimary">@android:color/white</item>
+
+        <item name="colorSecondary">@color/belirgin</item>
+        <item name="colorOnSecondary">@android:color/black</item>
+
+        <item name="android:colorBackground">@color/arkaplan</item>
+        <item name="colorSurface">@color/acık</item>
+        <item name="colorOnSurface">@android:color/black</item>
+        <item name="colorOnBackground">@color/navDrawerBackground</item>
+
+        <item name="bottomNavigationStyle">@color/bottomNavigationBackground</item>
+        <item name="toolbarStyle">@color/toolbarBackground</item>
+
+        <item name="android:statusBarColor">@color/anaRenkKoyu</item>
+    </style>
+
+    <style name="Theme.LearnConnectApp" parent="Base.Theme.LearnConnectApp" />
+</resources>

@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="bookDetailFragment"
+            type="com.example.learnconnectapp.ui.fragment.CourseDetailFragment" />
+        <variable
+            name="kursNesnesi"
+            type="com.example.learnconnectapp.data.entity.Kurslar" />
+        <variable
+            name="gorselNesnesi"
+            type="com.example.learnconnectapp.data.entity.ImageLinks" />
+        <variable
+            name="viewModel"
+            type="com.example.learnconnectapp.ui.viewmodel.HomePageViewModel" />
+        <variable
+            name="coursedetailviewModel"
+            type="com.example.learnconnectapp.ui.viewmodel.CourseDetailViewModel" />
+
+
+
+    </data>
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        android:paddingBottom="100dp">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp"
+            android:background="@color/acık"
+            android:paddingBottom="100dp">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <Button
+                    android:id="@+id/downloadButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="52dp"
+                    android:layout_marginEnd="134dp"
+                    android:text="Download"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/imageViewKitapDetayresim" />
+
+                <Button
+                    android:id="@+id/button"
+                    android:layout_width="166dp"
+                    android:layout_height="47dp"
+                    android:layout_marginTop="108dp"
+                    android:layout_marginEnd="104dp"
+                    android:fontFamily="@font/playfair_display"
+                    android:text="APPLY"
+                    android:textSize="16sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/imageViewKitapDetayresim" />
+
+                <TextView
+                    android:id="@+id/textViewKitapdetayisim"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:layout_marginTop="223dp"
+                    android:fontFamily="@font/playfair_display"
+                    android:text="@{kursNesnesi.kurs_isim}"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:id="@+id/imageViewKitapDetayresim"
+                    android:layout_width="166dp"
+                    android:layout_height="156dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="56dp"
+                    android:src="@{gorselNesnesi.thumbnail}"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.511"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/textView3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="384dp"
+                    android:fontFamily="@font/playfair_display"
+                    android:text="Course Content"
+                    android:textSize="16sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvcourseDetail"
+                    android:layout_width="376dp"
+                    android:layout_height="168dp"
+                    android:layout_marginStart="9dp"
+                    android:layout_marginTop="6dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView3"
+                    tools:listitem="@layout/card_download_tasarim" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        </LinearLayout>
+    </ScrollView>
+
+</layout>
