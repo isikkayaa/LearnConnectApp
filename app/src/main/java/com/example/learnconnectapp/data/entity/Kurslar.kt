@@ -11,5 +11,5 @@ import java.io.Serializable
 data class Kurslar(@PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "kurs_id" )@NotNull var kurs_id:Int,
     @ColumnInfo(name="kurs_isim") @NotNull var kurs_isim : String,
-    @ColumnInfo(name = "kurs_gorsel") var kurs_gorsel:ImageLinks?) : Serializable
+    @ColumnInfo(name = "kurs_gorsel") var kurs_gorsel:ImageLinks? = null) : Serializable
 

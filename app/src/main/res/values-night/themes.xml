@@ -8,21 +8,16 @@
         <item name="colorSecondary">@color/belirgin</item>
         <item name="colorOnSecondary">@android:color/white</item>
 
-        <item name="android:colorBackground">@color/arkaplan</item>
+        <item name="android:colorBackground">@color/navDrawerBackground</item>
         <item name="colorSurface">@color/acık</item>
         <item name="colorOnSurface">@android:color/white</item>
-        <item name="colorOnBackground">@color/navDrawerBackground</item>
+        <item name="colorOnBackground">@color/arkaplan</item>
 
-
-
-
+        <item name="bottomNavigationStyle">@color/bottomNavigationBackground</item>
+        <item name="toolbarStyle">@color/toolbarBackground</item>
 
         <item name="android:statusBarColor">@color/anaRenkKoyu</item>
     </style>
 
     <style name="Theme.LearnConnectApp" parent="Base.Theme.LearnConnectApp"/>
-
-
-
-
 </resources>

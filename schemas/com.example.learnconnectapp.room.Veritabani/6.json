@@ -1,0 +1,348 @@
+{
+  "formatVersion": 1,
+  "database": {
+    "version": 6,
+    "identityHash": "6deedd0223455aa0fb62bf2e861bc162",
+    "entities": [
+      {
+        "tableName": "kisiler",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`kisi_id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `kisi_username` TEXT NOT NULL, `kisi_email` TEXT NOT NULL, `kisi_sifre` TEXT NOT NULL, `kisi_kurs_isim` TEXT NOT NULL, `kisi_video_ilerleme` INTEGER NOT NULL, `kisi_fav_kurs` TEXT NOT NULL, `kisi_kurs_yorum` TEXT NOT NULL, `kisi_kurs_puan` INTEGER NOT NULL, `kisi_kurs_indirme` TEXT NOT NULL)",
+        "fields": [
+          {
+            "fieldPath": "kisi_id",
+            "columnName": "kisi_id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "kisi_username",
+            "columnName": "kisi_username",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "kisi_email",
+            "columnName": "kisi_email",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "kisi_sifre",
+            "columnName": "kisi_sifre",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "kisi_kurs_isim",
+            "columnName": "kisi_kurs_isim",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "kisi_video_ilerleme",
+            "columnName": "kisi_video_ilerleme",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "kisi_fav_kurs",
+            "columnName": "kisi_fav_kurs",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "kisi_kurs_yorum",
+            "columnName": "kisi_kurs_yorum",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "kisi_kurs_puan",
+            "columnName": "kisi_kurs_puan",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "kisi_kurs_indirme",
+            "columnName": "kisi_kurs_indirme",
+            "affinity": "TEXT",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": true,
+          "columnNames": [
+            "kisi_id"
+          ]
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "kurslar",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`kurs_id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `kurs_isim` TEXT NOT NULL, `kurs_gorsel` TEXT)",
+        "fields": [
+          {
+            "fieldPath": "kurs_id",
+            "columnName": "kurs_id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "kurs_isim",
+            "columnName": "kurs_isim",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "kurs_gorsel",
+            "columnName": "kurs_gorsel",
+            "affinity": "TEXT",
+            "notNull": false
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": true,
+          "columnNames": [
+            "kurs_id"
+          ]
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "comments",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`comment_id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `courseTitle` TEXT NOT NULL, `userComment` TEXT NOT NULL, `courseImageUrl` TEXT, `rating` INTEGER NOT NULL)",
+        "fields": [
+          {
+            "fieldPath": "comment_id",
+            "columnName": "comment_id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "courseTitle",
+            "columnName": "courseTitle",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "userComment",
+            "columnName": "userComment",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "courseImageUrl",
+            "columnName": "courseImageUrl",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "rating",
+            "columnName": "rating",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": true,
+          "columnNames": [
+            "comment_id"
+          ]
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "currentlycourselist",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`currently_kurs_id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `currently_kurs_isim` TEXT NOT NULL, `imageLinks` TEXT)",
+        "fields": [
+          {
+            "fieldPath": "currently_kurs_id",
+            "columnName": "currently_kurs_id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "currently_kurs_isim",
+            "columnName": "currently_kurs_isim",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "imageLinks",
+            "columnName": "imageLinks",
+            "affinity": "TEXT",
+            "notNull": false
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": true,
+          "columnNames": [
+            "currently_kurs_id"
+          ]
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "downloadkurslar",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`download_kurs_id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `download_kurs_isim` TEXT NOT NULL, `imageLinks` TEXT)",
+        "fields": [
+          {
+            "fieldPath": "download_kurs_id",
+            "columnName": "download_kurs_id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "download_kurs_isim",
+            "columnName": "download_kurs_isim",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "imageLinks",
+            "columnName": "imageLinks",
+            "affinity": "TEXT",
+            "notNull": false
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": true,
+          "columnNames": [
+            "download_kurs_id"
+          ]
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "favorikurslar",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`fav_kurs_id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `fav_kurs_isim` TEXT NOT NULL, `imageLinks` TEXT)",
+        "fields": [
+          {
+            "fieldPath": "fav_kurs_id",
+            "columnName": "fav_kurs_id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "fav_kurs_isim",
+            "columnName": "fav_kurs_isim",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "imageLinks",
+            "columnName": "imageLinks",
+            "affinity": "TEXT",
+            "notNull": false
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": true,
+          "columnNames": [
+            "fav_kurs_id"
+          ]
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "videos",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `course_id` INTEGER NOT NULL, `video_id` INTEGER NOT NULL, `video_title` TEXT NOT NULL, `video_url` TEXT NOT NULL)",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "courseId",
+            "columnName": "course_id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "videoId",
+            "columnName": "video_id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "videoTitle",
+            "columnName": "video_title",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "videoUrl",
+            "columnName": "video_url",
+            "affinity": "TEXT",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": true,
+          "columnNames": [
+            "id"
+          ]
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "video_progress",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `user_id` INTEGER NOT NULL, `course_id` INTEGER NOT NULL, `video_id` INTEGER NOT NULL, `progress` INTEGER NOT NULL)",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "userId",
+            "columnName": "user_id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "courseId",
+            "columnName": "course_id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "videoId",
+            "columnName": "video_id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "progress",
+            "columnName": "progress",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": true,
+          "columnNames": [
+            "id"
+          ]
+        },
+        "indices": [],
+        "foreignKeys": []
+      }
+    ],
+    "views": [],
+    "setupQueries": [
+      "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '6deedd0223455aa0fb62bf2e861bc162')"
+    ]
+  }
+}

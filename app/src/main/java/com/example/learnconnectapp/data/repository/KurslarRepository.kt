@@ -7,7 +7,8 @@ import com.example.learnconnectapp.room.KurslarDao
 class KurslarRepository(var kurslarDataSource: KurslarDataSource,var kurslarDao: KurslarDao) {
 
 
-  /*  suspend fun kurslariYukle() : List<Kurslar> =  kurslarDataSource.kurslariYukle()
+  suspend fun kurslariYukle(kursId : Int) : List<Kurslar> =  kurslarDataSource.kurslariYukle(kursId)
 
-   */
+  suspend fun searchCourses(query: String): List<Kurslar> = kurslarDao.searchCourses(query)
+
 }

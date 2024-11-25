@@ -2,6 +2,7 @@ buildscript{
     repositories {
         google()
         mavenCentral()
+        jcenter()
         maven {
             url = uri("https://jitpack.io")
             maven(url = "<https://jitpack.io>")
