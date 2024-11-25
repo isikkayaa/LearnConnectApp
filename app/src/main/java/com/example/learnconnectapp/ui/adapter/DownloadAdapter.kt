@@ -14,10 +14,11 @@ import com.example.learnconnectapp.data.entity.Kurslar
 import com.example.learnconnectapp.databinding.CardDownloadTasarimBinding
 import com.example.learnconnectapp.databinding.CardFavTasarimBinding
 import com.example.learnconnectapp.ui.fragment.FavouritesFragmentDirections
+import com.example.learnconnectapp.ui.viewmodel.DownloadViewModel
 import com.example.learnconnectapp.ui.viewmodel.HomePageViewModel
 import com.example.learnconnectapp.util.gecisYap
 
-class DownloadAdapter (var mContext: Context, var downloadsListesi : List<DownloadKurslar>, var viewModel : HomePageViewModel) : RecyclerView.Adapter<DownloadAdapter.CardTasarimTutucuDownload>() {
+class DownloadAdapter (var mContext: Context, var downloadsListesi : List<DownloadKurslar>, var homePageViewModel: HomePageViewModel,var downloadViewModel: DownloadViewModel) : RecyclerView.Adapter<DownloadAdapter.CardTasarimTutucuDownload>() {
 
     inner class CardTasarimTutucuDownload(var tasarim: CardDownloadTasarimBinding) :
         RecyclerView.ViewHolder(tasarim.root)

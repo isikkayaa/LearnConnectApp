@@ -24,7 +24,7 @@ class LoginFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = FragmentLoginBinding.inflate(inflater, container, false)
-        firebaseAuth = FirebaseAuth.getInstance()
+
 
         binding.buttonLogin.setOnClickListener {
             val email = binding.emailLogin.text.toString()
@@ -46,6 +46,7 @@ class LoginFragment : Fragment() {
         binding.buttonRegister.setOnClickListener {
             Navigation.findNavController(it).navigate(R.id.signupaGecis)
         }
+        observeLoginResult()
 
         return binding.root
     }
@@ -53,6 +54,31 @@ class LoginFragment : Fragment() {
     private fun navigateToHomePage() {
         viewLifecycleOwner.lifecycleScope.launchWhenStarted {
             Navigation.findNavController(requireView()).navigate(R.id.action_loginFragment_to_homePageFragment)
+        }
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        initFirebaseAuth()
+    }
+    private fun initFirebaseAuth() {
+        firebaseAuth = FirebaseAuth.getInstance()
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        if (firebaseAuth.currentUser != null) {
+            navigateToHomePage()
+        }
+
+    }
+    private fun observeLoginResult() {
+        usersViewModel.loginResult.observe(viewLifecycleOwner) { success ->
+            if (success) {
+                navigateToHomePage()
+            } else {
+                Toast.makeText(requireContext(), "Login failed", Toast.LENGTH_SHORT).show()
+            }
         }
     }
 }

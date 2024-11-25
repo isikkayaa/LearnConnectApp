@@ -4,14 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.fragment.SignUpFragment">
+    tools:context=".ui.fragment.SignUpFragment"
+    android:paddingBottom="0dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout3"
         android:layout_width="410dp"
         android:layout_height="173dp"
         android:background="#D3D3D3"
-        android:backgroundTint="@color/belirgin"
+        android:backgroundTint="#BCBCBC"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -25,7 +26,7 @@
             android:layout_height="102dp"
             android:fontFamily="@font/playfair_display"
             android:text="@string/create"
-            android:textColor="@color/anaRenkKoyu"
+            android:textColor="#D22F2F"
             android:textSize="34sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -47,7 +48,7 @@
             android:id="@+id/textInputLayout3"
             android:layout_width="327dp"
             android:layout_height="67dp"
-            android:layout_marginTop="66dp"
+            android:layout_marginTop="46dp"
             android:hint="@string/username"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"

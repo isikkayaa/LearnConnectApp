@@ -40,7 +40,6 @@
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="45dp"
                     android:scaleType="centerCrop"
-                    app:imageUri="@{yorumNesnesi.bookImageUrl}"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -78,10 +77,10 @@
                     android:layout_height="wrap_content"
                     android:isIndicator="true"
                     android:numStars="5"
-                    android:rating="@{yorumNesnesi.rating}"
+                    android:rating="@{(float)yorumNesnesi.rating}"
                     android:scaleX="0.6"
                     android:scaleY="0.6"
-                    android:stepSize="0.5"
+                    android:stepSize="1"
                     android:progressBackgroundTint="@color/arkaplan"
                     android:progressTint="@color/anaRenk"
                     app:layout_constraintStart_toEndOf="@+id/imageView2"
