@@ -44,10 +44,6 @@ LearnConnect is a modern video-based education platform that allows users to enr
 - **Dark Mode Support:**
   - Users can enable dark mode for the application
 
-## Performance and UX Requirements
-- Video playback times are optimized (loading time ≤ 2 seconds).
-- Offline data management works flawlessly.
-
 ## Testing
 Unit tests have been written for login and logout operations. These tests ensure the reliability of user authentication processes.
 
