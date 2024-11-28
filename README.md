@@ -52,8 +52,29 @@ Unit tests have been written for login and logout operations. These tests ensure
 - **Favorites (Watchlist):** Users can add courses to their favorites.
 - **Commenting and Rating System:** Users can leave comments and rate courses.
 
-## Screenshots
-I will add screenshots here.
+## 📸 Screenshots
+
+|     <img src="screenshots/splash.png" alt="Screen1" width="300"/>      |     <img src="screenshots/signin.png" alt="Screen2" width="300"/>     |      <img src="screenshots/login.png" alt="Screen3" width="300"/>      |
+|:----------------------------------------------------------------------:|:----------------------------------------------------------------------:|:----------------------------------------------------------------------:|
+|                            **WELCOME PAGE**                            |                           **REGISTER PAGE**                            |                             **LOGIN PAGE**                             |
+
+|    <img src="screenshots/homepage.png" alt="Screen4" width="300"/>  |      <img src="screenshots/navigation_drawer.png" alt="Screen5" width="300"/>     |  <img src="screenshots/detail.png" alt="Screen6" width="300"/>     |
+|:----------------------------------------------------------------------:|:----------------------------------------------------------------------:|:----------------------------------------------------------------------:|
+|                        **HOMEPAGE**                                 |                             **NAVIGATION DRAWER**                              |                           **COURSE DETAIL PAGE**                      |
+
+|    <img src="screenshots/favs.png" alt="Screen7" width="300"/>        |      <img src="screenshots/profile.png" alt="Screen8" width="300"/>     |                                                                           
+|:----------------------------------------------------------------------:|:----------------------------------------------------------------------:|
+|                         **FAVOURITES PAGE**                           |                         **PROFILE PAGE**                                |                                                                            
+                                                                                                                         
+         
+
+
+  
+
+
+
+
+
 
 
 This README file provides an overview of the LearnConnect application’s functionalities and installation steps.                    
