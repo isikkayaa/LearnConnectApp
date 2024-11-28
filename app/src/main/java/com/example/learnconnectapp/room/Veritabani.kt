@@ -1,6 +1,7 @@
 package com.example.learnconnectapp.room
 
 import android.content.Context
+import android.util.Log
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
@@ -21,18 +22,17 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 
-@Database(entities = [Kisiler::class,Kurslar::class,Comments::class,CurrentlyCourseList::class,DownloadKurslar::class,FavoriKurslar::class,Video::class,VideoProgress::class], version = 6)
+@Database(entities = [Kisiler::class, Kurslar::class, Comments::class, CurrentlyCourseList::class, DownloadKurslar::class, FavoriKurslar::class, Video::class, VideoProgress::class], version = 6, exportSchema = false  )
 @TypeConverters(Converters::class)
-abstract class Veritabani : RoomDatabase(){
+abstract class Veritabani : RoomDatabase() {
 
-    abstract fun kisilerDao() : KisilerDao
-    abstract fun kurslarDao() : KurslarDao
-    abstract fun videoDao() : VideoDao
-    abstract fun commentsDao() : CommentsDao
-    abstract fun videoProgressDao() : VideoProgressDao
-    abstract fun downloadDao() : DownloadDao
-
-
+    abstract fun kisilerDao(): KisilerDao
+    abstract fun kurslarDao(): KurslarDao
+    abstract fun videoDao(): VideoDao
+    abstract fun commentsDao(): CommentsDao
+    abstract fun videoProgressDao(): VideoProgressDao
+    abstract fun downloadDao(): DownloadDao
+    abstract fun currentlyCourseDao() : CurrentlyCourseDao
     companion object {
         @Volatile
         private var INSTANCE: Veritabani? = null
@@ -45,28 +45,10 @@ abstract class Veritabani : RoomDatabase(){
                 ).addCallback(object : RoomDatabase.Callback() {
                     override fun onCreate(db: SupportSQLiteDatabase) {
                         super.onCreate(db)
-                        val dummyKurslar = listOf(
-                            Kurslar(kurs_id = 1, kurs_isim = "Kotlin ile Android Programlama", kurs_gorsel = ImageLinks("small_thumbnail_url", "thumbnail_url")),
-                            Kurslar(kurs_id = 2, kurs_isim = "Swift ile iOS Programlama", kurs_gorsel = ImageLinks("small_thumbnail_url", "thumbnail_url"))
-                        )
-
-                        val dummyComments = listOf(
-                            Comments(comment_id = 1, courseTitle = "Kotlin ile Android Programlama", userComment = "Harika bir kurs!", courseImageUrl = ImageLinks("small_thumbnail_url", "thumbnail_url"), rating = 5),
-                            Comments(comment_id = 2, courseTitle = "Swift ile iOS Programlama", userComment = "Çok öğretici!", courseImageUrl = ImageLinks("small_thumbnail_url", "thumbnail_url"), rating = 4)
-                        )
-
-                        val dummyVideos = listOf(
-                            Video(courseId = 1, videoId = 1, videoTitle = "Kotlin Giriş", videoUrl = "https://www.example.com/videos/kotlin_giris.mp4"),
-                            Video(courseId = 1, videoId = 2, videoTitle = "Kotlin İleri Seviye", videoUrl = "https://www.example.com/videos/kotlin_ileri.mp4"),
-                            Video(courseId = 2, videoId = 1, videoTitle = "Swift Giriş", videoUrl = "https://www.example.com/videos/swift_giris.mp4"),
-                            Video(courseId = 2, videoId = 2, videoTitle = "Swift İleri Seviye", videoUrl = "https://www.example.com/videos/swift_ileri.mp4")
-                        )
 
                         INSTANCE?.let { database ->
                             CoroutineScope(Dispatchers.IO).launch {
-                                database.kurslarDao().insertAll(dummyKurslar)
-                                database.commentsDao().insertAll(dummyComments)
-                                database.videoDao().insertAll(dummyVideos)
+
                             }
                         } }
                 }).build()
@@ -81,3 +63,5 @@ abstract class Veritabani : RoomDatabase(){
 
 
 }
+
+

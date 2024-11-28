@@ -69,9 +69,6 @@
         <argument
             android:name="kurs"
             app:argType="com.example.learnconnectapp.data.entity.Kurslar" />
-        <argument
-            android:name="gorsel"
-            app:argType="com.example.learnconnectapp.data.entity.ImageLinks" />
         <action
             android:id="@+id/action_courseDetailFragment_to_videoPlayerFragment"
             app:destination="@id/videoPlayerFragment" />

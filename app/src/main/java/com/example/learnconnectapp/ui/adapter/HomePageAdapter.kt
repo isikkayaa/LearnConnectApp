@@ -13,6 +13,7 @@ import com.example.learnconnectapp.R
 import com.example.learnconnectapp.data.entity.FavoriKurslar
 import com.example.learnconnectapp.data.entity.ImageLinks
 import com.example.learnconnectapp.data.entity.Kurslar
+import com.example.learnconnectapp.data.entity.Video
 import com.example.learnconnectapp.databinding.CardTasarimBinding
 import com.example.learnconnectapp.ui.fragment.HomePageFragmentDirections
 import com.example.learnconnectapp.ui.viewmodel.HomePageViewModel
@@ -57,79 +58,56 @@ class HomePageAdapter(
             t.imageViewkalpborder.setImageResource(R.drawable.baseline_favorite_border_24)
         }
 
-       holder.tasarim.gorsel = kurs.kurs_gorsel
+        holder.tasarim.imageViewKitapGorsel.setImageResource(kurs.kurs_gorsel)
         holder.tasarim.kursNesnesi = kurs
 
 
         holder.tasarim.textView8.text = kurs.kurs_isim
 
-        val thumbnailUrl = kurs.kurs_gorsel?.thumbnail
-        if (kurs.kurs_gorsel?.thumbnail.isNullOrEmpty()) {
-            Log.d("ImageLinks", "ImageLinks for ${kurs.kurs_isim}: No thumbnail available.")
-        } else {
-            Log.d("ImageLinks", "Thumbnail URL for ${kurs.kurs_isim}: ${kurs.kurs_gorsel?.thumbnail}")
-        }
 
-
-        if (thumbnailUrl != null && thumbnailUrl.isNotBlank()) {
-            Glide.with(holder.itemView.context)
-                .load(thumbnailUrl)
-                .placeholder(R.drawable.baseline_list_24)
-                .error(R.drawable.baseline_list_24)
-                .into(holder.tasarim.imageViewKitapGorsel)
-        } else {
-            holder.tasarim.imageViewKitapGorsel.setImageResource(R.drawable.baseline_download_24)
-        }
-
-
-        t.cardViewSatir.setOnClickListener {
-            when (fragmentType) {
-                "HomePageFragment" -> {
-                    val gecis = HomePageFragmentDirections.detayGecis(
-                        kurs = kurs,
-                        gorsel = kurs.kurs_gorsel ?: ImageLinks(thumbnail = null, smallThumbnail = null)
-                    )
-                    Navigation.gecisYap(it, gecis)
-                }
-
-        }
-
-/*
         t.imageViewkalpborder.setOnClickListener {
             val context = t.imageViewkalpborder.context
+            it.isClickable = false
             if (isFavourited) {
-                viewModel.removeFromFavorites(kurs.kurs_isim) { success ->
-                    if (success) {
-                        t.imageViewkalpborder.setImageResource(R.drawable.baseline_favorite_border_24)
-                        Snackbar.make(it, context.getString(R.string.remove_from_favorites_success, kurs.kurs_isim), Snackbar.LENGTH_SHORT).show()
-                    } else {
-                        Snackbar.make(it, context.getString(R.string.remove_from_favorites_fail), Snackbar.LENGTH_SHORT).show()
-                    }
-                }
+                viewModel.removeCourseFromFavorites(kurs.kurs_id)
+                t.imageViewkalpborder.setImageResource(R.drawable.baseline_favorite_border_24)
+                Snackbar.make(it, "${kurs.kurs_isim} removed from favorites.", Snackbar.LENGTH_SHORT).show()
             } else {
-                viewModel.addBookToFavorites(kurs) { success ->
-                    if (success) {
-                        t.imageViewkalpborder.setImageResource(R.drawable.baseline_favorite_24)
-                        Snackbar.make(it, context.getString(R.string.add_to_favorites_success, kurs.kurs_isim), Snackbar.LENGTH_SHORT).show()
-                    } else {
-                        Snackbar.make(it, context.getString(R.string.add_to_favorites_fail), Snackbar.LENGTH_SHORT).show()
+                viewModel.addCourseToFavorites(kurs)
+                t.imageViewkalpborder.setImageResource(R.drawable.baseline_favorite_24)
+                Snackbar.make(it, "${kurs.kurs_isim} added to favorites.", Snackbar.LENGTH_SHORT).show()
+                updateFavorites(viewModel.getFavorites().value ?: emptyList())
+            }
+            it.isClickable = true
+
+
+        }
+
+        t.cardViewSatir.setOnClickListener {
+            if (it.id != t.imageViewkalpborder.id) {
+                when (fragmentType) {
+                    "HomePageFragment" -> {
+                        val gecis = HomePageFragmentDirections.detayGecis(
+                            kurs = kurs
+                        )
+                        Navigation.gecisYap(it, gecis)
                     }
                 }
             }
         }
+
+
     }
 
-
- */
-
-
-
-
-
-}}
+    fun updateFavorites(newFavorites: List<FavoriKurslar>) {
+        favoriKurslar = newFavorites
+        notifyDataSetChanged()
+    }
 
     @SuppressLint("NotifyDataSetChanged")
     fun updateKurslar(newKurslar: List<Kurslar>) {
         kurslarListesi = newKurslar
         notifyDataSetChanged()
     }}
+
+

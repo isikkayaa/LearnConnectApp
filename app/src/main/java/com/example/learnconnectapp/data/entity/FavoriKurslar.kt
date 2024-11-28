@@ -10,5 +10,5 @@ import org.jetbrains.annotations.NotNull
 data class FavoriKurslar(@PrimaryKey(autoGenerate = true)
                          @ColumnInfo(name = "fav_kurs_id") @NotNull val fav_kurs_id: Int,
                          @ColumnInfo(name = "fav_kurs_isim") @NotNull val fav_kurs_isim: String,
-                         @ColumnInfo(name = "imageLinks") val imageLinks: ImageLinks? = null
+                         @ColumnInfo(name = "imageLinks") @NotNull val imageLinks: Int
 )

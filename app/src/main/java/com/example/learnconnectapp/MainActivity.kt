@@ -148,8 +148,6 @@ class MainActivity : AppCompatActivity() {
 
         actionBarDrawerToggle.setHomeAsUpIndicator(R.drawable.baseline_menu_24)
 
-
-        // Navigation Item Listener
         navigationView.setNavigationItemSelectedListener { menuItem ->
             menuItem.isChecked = true
             drawerLayout.closeDrawers()
@@ -160,11 +158,6 @@ class MainActivity : AppCompatActivity() {
             true
         }
     }
-
-
-
-
-
 
 
 

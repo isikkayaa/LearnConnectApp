@@ -4,10 +4,12 @@ import android.content.Context
 import androidx.room.Room
 import com.example.learnconnectapp.data.datasource.KisilerDataSource
 import com.example.learnconnectapp.data.datasource.KurslarDataSource
+import com.example.learnconnectapp.data.entity.Kisiler
 import com.example.learnconnectapp.data.entity.Kurslar
 import com.example.learnconnectapp.data.repository.KisilerRepository
 import com.example.learnconnectapp.data.repository.KurslarRepository
 import com.example.learnconnectapp.room.CommentsDao
+import com.example.learnconnectapp.room.CurrentlyCourseDao
 import com.example.learnconnectapp.room.DownloadDao
 import com.example.learnconnectapp.room.KisilerDao
 import com.example.learnconnectapp.room.KurslarDao
@@ -20,6 +22,8 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Singleton
 
 
@@ -30,57 +34,70 @@ object AppModule {
 
     @Provides
     @Singleton
-    fun provideKisilerRepository(kdao: KisilerDao,kds: KisilerDataSource) : KisilerRepository{
+    fun provideKisilerRepository(kdao: KisilerDao, kds: KisilerDataSource): KisilerRepository {
         return KisilerRepository(kds, kdao)
     }
 
     @Provides
     @Singleton
-    fun provideKisilerDataSource(kdao: KisilerDao) : KisilerDataSource{
+    fun provideKisilerDataSource(kdao: KisilerDao): KisilerDataSource {
         return KisilerDataSource(kdao)
     }
 
     @Provides
     @Singleton
-    fun provideKisilerDao(db:Veritabani) : KisilerDao = db.kisilerDao()
+    fun provideCurrentlyCourseDao(db: Veritabani) : CurrentlyCourseDao = db.currentlyCourseDao()
+
 
 
     @Provides
     @Singleton
-    fun provideKurslarDataSource(kurslarDao: KurslarDao) : KurslarDataSource{
+    fun provideKisilerDao(@ApplicationContext context: Context): KisilerDao {
+        val vt = Room.databaseBuilder(context, Veritabani::class.java, "video.sqlite")
+            .createFromAsset("video.sqlite").build()
+        return vt.kisilerDao()
+    }
+
+
+    @Provides
+    @Singleton
+    fun provideKurslarDataSource(kurslarDao: KurslarDao): KurslarDataSource {
         return KurslarDataSource(kurslarDao)
     }
 
 
     @Provides
     @Singleton
-    fun provideKurslarRepository(kurslarDataSource: KurslarDataSource,kurslarDao: KurslarDao) : KurslarRepository{
+    fun provideKurslarRepository(
+        kurslarDataSource: KurslarDataSource,
+        kurslarDao: KurslarDao
+    ): KurslarRepository {
         return KurslarRepository(kurslarDataSource, kurslarDao)
     }
 
 
-
     @Provides
     @Singleton
-    fun provideKurslarDao(db: Veritabani) : KurslarDao = db.kurslarDao()
-
-
-    @Provides
-    @Singleton
-    fun provideCommentsDao(db: Veritabani) : CommentsDao = db.commentsDao()
+    fun provideKurslarDao(db: Veritabani): KurslarDao = db.kurslarDao()
 
 
     @Provides
     @Singleton
-    fun provideVideoDao(db: Veritabani) : VideoDao = db.videoDao()
+    fun provideCommentsDao(db: Veritabani): CommentsDao = db.commentsDao()
+
 
     @Provides
     @Singleton
-    fun provideDownloadDao(db: Veritabani) : DownloadDao = db.downloadDao()
+    fun provideVideoDao(db: Veritabani): VideoDao = db.videoDao()
+
 
     @Provides
     @Singleton
-    fun provideVideoProgressDao(db: Veritabani) : VideoProgressDao = db.videoProgressDao()
+    fun provideDownloadDao(db: Veritabani): DownloadDao = db.downloadDao()
+
+    @Provides
+    @Singleton
+    fun provideVideoProgressDao(db: Veritabani): VideoProgressDao = db.videoProgressDao()
 
     @Singleton
     @Provides
@@ -98,13 +115,6 @@ object AppModule {
     fun provideFirebaseAuth(): FirebaseAuth {
         return FirebaseAuth.getInstance()
     }
-
-
-
-
-
-
-
 
 
 }

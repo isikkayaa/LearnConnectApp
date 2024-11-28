@@ -28,8 +28,9 @@ class DownloadFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        downloadViewModel.loadDownloadedVideos()
+        downloadViewModel.loadDownloadedCourses()
     }
+
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = FragmentDownloadBinding.inflate(inflater, container, false)
@@ -47,7 +48,7 @@ class DownloadFragment : Fragment() {
     }
 
     private fun observeViewModel() {
-        downloadViewModel.downloadedVideos.observe(viewLifecycleOwner) { downloads ->
+        downloadViewModel.downloadedCourses.observe(viewLifecycleOwner) { downloads ->
             downloads?.let {
                 downloadAdapter.updateDownloads(it)
             }

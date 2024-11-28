@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!-- Kırmızı tonları -->
-    <color name="anaRenk">#FF71080D</color> <!-- Primary Red -->
-    <color name="anaRenkKoyu">#FFBC081F</color> <!-- Darker Red -->
-    <color name="belirgin">#FFDE1E33</color> <!-- Highlight Red -->
+    <color name="anaRenk">#FF71080D</color>
+    <color name="anaRenkKoyu">#FFBC081F</color>
+    <color name="belirgin">#FFDE1E33</color>
 
     <!-- Gri tonları -->
-    <color name="arkaplan">#333333</color> <!-- Dark Gray (Background) -->
-    <color name="acık">#424242</color> <!-- Darker Gray (Surface) -->
-    <color name="navDrawerBackground">#1c1b1f</color> <!-- Darkest Gray (Navigation Drawer Background) -->
-    <color name="toolbarBackground">#5B5B5B</color> <!-- Toolbar için koyu gri -->
-    <color name="bottomNavigationBackground">#424242</color> <!-- Bottom navigation için koyu gri -->
-    <color name="textColor">#FFFFFF</color> <!-- Navigation Drawer üzerindeki yazılar için beyaz -->
+    <color name="arkaplan">#333333</color>
+    <color name="acık">#424242</color>
+    <color name="navDrawerBackground">#1c1b1f</color>
+    <color name="toolbarBackground">#5B5B5B</color>
+    <color name="bottomNavigationBackground">#424242</color>
+    <color name="textColor">#FFFFFF</color>
 </resources>

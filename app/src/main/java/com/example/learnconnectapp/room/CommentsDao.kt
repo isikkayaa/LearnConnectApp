@@ -5,7 +5,6 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import com.example.learnconnectapp.data.entity.Comments
-import com.example.learnconnectapp.data.entity.Video
 
 
 @Dao
@@ -20,7 +19,7 @@ interface CommentsDao {
     suspend fun getCommentsByCourseTitle(courseTitle: String): List<Comments>
 
     @Query("SELECT * FROM comments WHERE comment_id = :commentId")
-    suspend fun getCommentsByUser(commentId:Int): List<Comments>
+    suspend fun getCommentsByUser(commentId: Int): List<Comments>
 
 
 }

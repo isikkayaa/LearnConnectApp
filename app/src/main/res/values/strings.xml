@@ -9,12 +9,9 @@
     <string name="cancel">Cancel</string>
     <string name="accept">Done</string>
     <string name="msg_token_fmt">Token</string>
-    <string name="read_list">Read List</string>
-    <string name="reading_list">Reading List</string>
     <string name="logout">Logout</string>
     <string name="settings">Settings</string>
     <string name="dark_mode">Dark Mode</string>
-    <string name="language">Language</string>
     <string name="SignIntoYourAccount">Sign in to your Account</string>
     <string name="Password">Password</string>
     <string name="forget">Did you forget password?</string>
@@ -30,20 +27,11 @@
     <string name="Homepage">Homepage</string>
     <string name="search">Search</string>
     <string name="fav">Favourites</string>
-    <string name="profile">Profile</string>
-    <string name="Bestsellers">Books that might interest you!</string>
-    <string name="currently">You are currently reading</string>
-    <string name="book">Book</string>
-    <string name="books">Books</string>
+    <string name="profile">Profile</string>>
     <string name="thought">Your thoughts!</string>
-    <string name="currentlyread">Currently Reading</string>
-    <string name="email">Email</string>
-    <string name="reset">Reset your password</string>
-    <string name="resetpass">Reset Password</string>
-    <string name="add_to_read_list_success">Book added to Read List!</string>
 
-    <string name="add_to_reading_list_success">Book added to Reading List!</string>
-    <string name="add_to_reading_list_fail">Failed to add to Reading List</string>
+    <string name="email">Email</string>
+
     <string name="delete_confirm">Are you sure you want to delete?</string>
     <string name="logout_confirm">Are you sure you want to logout?</string>
     <string name="language_dialog_title">Select Language</string>
@@ -53,29 +41,8 @@
     <string name="add_to_favorites_success">%1$s was added to favorites!</string>
     <string name="remove_from_favorites_fail">Failed to remove from favorites</string>
     <string name="add_to_favorites_fail">Failed to add to favorites</string>
-    <string name="iread">I READ</string>
-    <string name="profile_photo">Profile Photo</string>
-    <string name="save_profile_photo_message">Do you want to save this picture as your profile photo?</string>
-    <string name="save">Save</string>
-    <string name="goal_setting_title">Set a Book Reading Goal</string>
-    <string name="enter_valid_goal">Enter a valid goal</string>
-    <string name="goal_saved">Goal saved successfully</string>
-    <string name="profile_photo_updated">Profile photo updated successfully</string>
-    <string name="permission_required_message">Permission is required to select an image</string>
-    <string name="fetch_comments_error">Error fetching comments</string>
-    <string name="upload_image_permission_rationale">Image selection requires storage permission.</string>
-    <string name="uploadimage">Upload Photo</string>
-    <string name="remove_from_comments_success">%1$s was removed from comments!</string>
-    <string name="remove_from_comments_fail">Failed to remove from comments</string>
-    <string name="remove_from_readlist_success">%1$s was removed from read list!</string>
-    <string name="remove_from_readlist_fail">Failed to remove from read list</string>
-    <string name="remove_from_readinglist_success">%1$s was removed from reading list!</string>
-    <string name="remove_from_readinglist_fail">Failed to remove from reading list</string>
-    <string name="remove_from_list_success">%1$s was removed from the list.</string>
-    <string name="remove_from_list_fail">Failed to remove %1$s from the list.</string>
-    <string name="read_more">Read More</string>
-    <string name="read_less">Read Less</string>
-    <string name="course_detail">Course Detail</string>
 
+    <string name="course_detail">Course Detail</string>
+    <string name="basic">Basic Jetpack Compose</string>
 
 </resources>

@@ -33,7 +33,6 @@ class SignUpFragment : Fragment() {
             firebaseAuth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener { task ->
                     if (task.isSuccessful) {
-                        // Kullanıcı oluşturulduğunda Room veritabanına ekle
                         viewModel.registerUser(username, email, password)
                         Navigation.findNavController(it).navigate(R.id.action_signUpFragment_to_loginFragment)
                     } else {

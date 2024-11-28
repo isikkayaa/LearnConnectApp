@@ -1,5 +1,9 @@
 package com.example.learnconnectapp.data.datasource
 
+import com.example.learnconnectapp.data.entity.CommentsSimple
+import com.example.learnconnectapp.data.entity.DownloadKurslarSimple
+import com.example.learnconnectapp.data.entity.FavoriKurslar
+import com.example.learnconnectapp.data.entity.FavoriKurslarSimple
 import com.example.learnconnectapp.data.entity.Kisiler
 import com.example.learnconnectapp.room.KisilerDao
 import kotlinx.coroutines.Dispatchers
@@ -21,25 +25,21 @@ suspend fun kisiKurslariYukle(kisiId:Int) : List<Kisiler> =
 
 
 
-  /*  suspend fun kisifavKursYukle() : List<Kisiler> =
+    suspend fun kisifavKursYukle(favKursId: Int) : List<FavoriKurslar> =
         withContext(Dispatchers.IO) {
-            return@withContext kdao.kisiFavKursYukle()
+            return@withContext kdao.kisiFavKursYukle(favKursId)
         }
 
-    suspend fun kisiKursIndirmeYukle() : List<Kisiler> =
+    suspend fun kisiKursIndirmeYukle(kisiId: Int) : List<DownloadKurslarSimple> =
         withContext(Dispatchers.IO) {
-            return@withContext kdao.kisiKursIndirmeYukle()
+            return@withContext kdao.kisiKursIndirmeYukle(kisiId)
         }
 
-    suspend fun kisiKursYorum() : List<Kisiler> =
+    suspend fun kisiKursYorum(kisiId: Int) : List<CommentsSimple> =
         withContext(Dispatchers.IO) {
-            return@withContext kdao.kisiKursYorum()
+            return@withContext kdao.kisiKursYorum(kisiId)
         }
 
-
-
-
-   */
 
 
 

@@ -29,14 +29,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
-                <ImageView
-                    android:id="@+id/imageViewvideo"
-                    android:layout_width="185dp"
-                    android:layout_height="103dp"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="68dp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
                     android:id="@+id/textViewvideoAdi"
@@ -55,7 +47,7 @@
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="4dp"
                     android:layout_marginBottom="4dp"
-                    android:text="Progress : 0"
+                    android:text="@{`Progress : ` + videoNesnesi.videoId}"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textViewvideoAdi" />
 

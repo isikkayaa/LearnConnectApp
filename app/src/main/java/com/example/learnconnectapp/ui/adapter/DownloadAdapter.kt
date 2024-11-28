@@ -32,8 +32,6 @@ class DownloadAdapter (var mContext: Context, var downloadsListesi : List<Downlo
     }
 
 
-
-
     @SuppressLint("StringFormatInvalid")
     override fun onBindViewHolder(holder: CardTasarimTutucuDownload, position: Int) {
         val downloadKurs = downloadsListesi[position]
@@ -44,21 +42,11 @@ class DownloadAdapter (var mContext: Context, var downloadsListesi : List<Downlo
 
         val isRemoved = downloadsListesi.any { it.download_kurs_isim == downloadKurs.download_kurs_isim }
 
+        holder.tasarim.imageViewdownloadVideo.setImageResource(downloadKurs.imageLinks)
 
 
-        holder.tasarim.textViewfavKitapAd.text = downloadKurs.download_kurs_isim
+        holder.tasarim.textViewdownloadVideoAdi.text = downloadKurs.download_kurs_isim
 
-        val thumbnailUrl = downloadKurs.imageLinks?.thumbnail
-        if (thumbnailUrl != null) {
-            /* Glide.with(holder.itemView.context)
-                .load(thumbnailUrl)
-                .into(holder.tasarim.imageViewfavKitap)
-
-             */
-        } else {
-            holder.tasarim.imageViewfavKitap.setImageResource(R.drawable.baseline_menu_24)
-
-        }
 
 
         t.cardViewDown.setOnClickListener {
@@ -71,8 +59,7 @@ class DownloadAdapter (var mContext: Context, var downloadsListesi : List<Downlo
             )
             val gecis = downloadKurs.imageLinks?.let { it1 ->
                 FavouritesFragmentDirections.actionFavouritesFragment2ToCourseDetailFragment(
-                    kurs = kurslar,
-                    gorsel = it1
+                    kurs = kurslar
                 )
             }
             if (gecis != null) {

@@ -11,4 +11,4 @@ import java.io.Serializable
 data class CurrentlyCourseList(@PrimaryKey(autoGenerate = true)
                                @ColumnInfo(name = "currently_kurs_id") @NotNull var currently_kurs_id : Int,
                                @ColumnInfo(name = "currently_kurs_isim") @NotNull var currently_kurs_isim: String,
-                               @ColumnInfo(name = "imageLinks") var imageLinks: ImageLinks? = null ) :Serializable
+                               @ColumnInfo(name = "imageLinks") @NotNull var imageLinks: Int ) :Serializable

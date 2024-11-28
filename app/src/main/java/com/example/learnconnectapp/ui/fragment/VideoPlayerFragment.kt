@@ -11,12 +11,10 @@ import androidx.fragment.app.viewModels
 import com.example.learnconnectapp.R
 import com.example.learnconnectapp.databinding.FragmentVideoPlayerBinding
 import com.example.learnconnectapp.ui.viewmodel.VideoPlayerViewModel
-import com.google.android.exoplayer2.ExoPlaybackException
 import com.google.android.exoplayer2.MediaItem
 import com.google.android.exoplayer2.PlaybackException
 import com.google.android.exoplayer2.Player
 import com.google.android.exoplayer2.SimpleExoPlayer
-import com.google.firebase.firestore.EventListener
 import dagger.hilt.android.AndroidEntryPoint
 
 
@@ -45,19 +43,15 @@ class VideoPlayerFragment : Fragment() {
         binding.viewModel = viewModel
         binding.lifecycleOwner = viewLifecycleOwner
 
-        // ExoPlayer'ı başlat
         player = SimpleExoPlayer.Builder(requireContext()).build()
         binding.playerView.player = player
 
-        // Video ilerlemesini yükle ve başlat
         viewModel.getProgress(userId, courseId, videoId) { progress ->
             player.setMediaItem(MediaItem.fromUri(videoUrl))
             player.prepare()
-            player.seekTo(progress)
+            player.seekTo(progress.toLong())
             player.playWhenReady = true
         }
-
-        // Video ilerlemesini kaydetmek için listener ekle
         player.addListener(object : Player.Listener {
             override fun onIsPlayingChanged(isPlaying: Boolean) {
                 if (!isPlaying) {

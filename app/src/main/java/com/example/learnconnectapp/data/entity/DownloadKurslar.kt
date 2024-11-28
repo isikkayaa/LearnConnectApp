@@ -10,4 +10,4 @@ import java.io.Serializable
 data class DownloadKurslar(@PrimaryKey(autoGenerate = true)
 @ColumnInfo(name = "download_kurs_id") @NotNull var download_kurs_id: Int,
                            @ColumnInfo(name = "download_kurs_isim") @NotNull var download_kurs_isim: String,
-                           @ColumnInfo(name = "imageLinks") var  imageLinks: ImageLinks? = null) :Serializable
+                           @ColumnInfo(name = "imageLinks") @NotNull var  imageLinks: Int) :Serializable

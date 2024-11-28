@@ -61,11 +61,12 @@ class HomePageFragment : Fragment() {
 
         observeViewModel()
 
+
         binding.searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener,
             androidx.appcompat.widget.SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
                 if (!query.isNullOrEmpty()) {
-                   // homePageViewModel.searchBooks(query, Constants.GOOGLEBOOKS_API_KEY)
+                    homePageViewModel.searchKurslar(query)
                     Log.d("HomePageFragment", "Arama yapılıyor: $query")
                 }
                 return true
@@ -84,15 +85,16 @@ class HomePageFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-       homePageViewModel.kurslariYukle(1)
+       homePageViewModel.kurslariYukle()
     }
 
     override fun onResume() {
         super.onResume()
-        homePageViewModel.kurslariYukle(1)
+        homePageViewModel.kurslariYukle()
     }
 
     private fun setupRecyclerView() {
+
         homePageAdapter = HomePageAdapter(
             requireContext(), emptyList(), emptyList(),
             homePageViewModel, "HomePageFragment"
@@ -106,46 +108,26 @@ class HomePageFragment : Fragment() {
     }
 
 
-
-
-
     private fun observeViewModel() {
         homePageViewModel.kurslarListesi.observe(viewLifecycleOwner) { kurslar ->
             kurslar?.let {
                 homePageAdapter.updateKurslar(it) } }
+
         homePageViewModel.searchResults.observe(viewLifecycleOwner) { results ->
             results?.let {
                 homePageAdapter.updateKurslar(it) } }
+
+
     }
 
 
     companion object {
         @JvmStatic
-        @BindingAdapter("bindAuthors")
-        fun bindAuthors(textView: TextView, authors: List<String>?) {
-            textView.text = authors?.joinToString(", ") ?: "Bilinmeyen Yazar"
+        @BindingAdapter("imageResource")
+        fun bindImageResource(imageView: ImageView, resourceId: Int) {
+            imageView.setImageResource(resourceId)
         }
 
-        @JvmStatic
-        @BindingAdapter("bindDescription")
-        fun bindDescription(textView: TextView, description: String?) {
-            textView.text = description ?: "Description not available"
-        }
-
-
-        @JvmStatic
-        @BindingAdapter("imageUrl")
-        fun loadImage(view: ImageView, imageUrl: String?) {
-            if (!imageUrl.isNullOrEmpty()) {
-                Glide.with(view.context)
-                    .load(imageUrl)
-                    .placeholder(R.drawable.baseline_list_24) // Varsayılan görsel
-                    .error(R.drawable.baseline_list_24) // Hata durumunda gösterilecek görsel
-                    .into(view)
-            } else {
-                view.setImageResource(R.drawable.baseline_download_24) // Eğer resim yoksa varsayılan görseli göster
-            }
-        }
 
 
 

@@ -14,18 +14,34 @@ import javax.inject.Inject
 class DownloadViewModel @Inject constructor(
     private val downloadDao: DownloadDao
 ) : ViewModel() {
-
-    private val _downloadedVideos = MutableLiveData<List<DownloadKurslar>>()
-    val downloadedVideos: LiveData<List<DownloadKurslar>> get() = _downloadedVideos
+    private val _downloadedCourses = MutableLiveData<List<DownloadKurslar>>()
+    val downloadedCourses: LiveData<List<DownloadKurslar>> get() = _downloadedCourses
 
     init {
-        loadDownloadedVideos()
+        loadDownloadedCourses()
     }
 
-    fun loadDownloadedVideos() {
+    fun loadDownloadedCourses() {
         viewModelScope.launch {
             val downloads = downloadDao.getAllDownloads()
-            _downloadedVideos.postValue(downloads)
+            _downloadedCourses.postValue(downloads)
+        }
+    }
+
+    fun saveDownloadedCourse(downloadKurs: DownloadKurslar) {
+        viewModelScope.launch {
+            val existingDownload = downloadDao.getDownloadByCourseId(downloadKurs.download_kurs_id)
+            if (existingDownload == null) {
+                downloadDao.insert(downloadKurs)
+                loadDownloadedCourses() // Refresh the list
+            }
+        }
+    }
+
+    fun deleteDownload(downloadKurs: DownloadKurslar) {
+        viewModelScope.launch {
+            downloadDao.delete(downloadKurs)
+            loadDownloadedCourses()
         }
     }
 }

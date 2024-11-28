@@ -14,19 +14,14 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class UsersViewModel @Inject constructor(private val repository: KisilerRepository) : ViewModel() {
+class UsersViewModel @Inject constructor(private val repository: KisilerRepository,private val firebaseAuth: FirebaseAuth) : ViewModel() {
 
-    private lateinit var firebaseAuth: FirebaseAuth
 
     private val _loginResult = MutableLiveData<Boolean>()
     val loginResult: LiveData<Boolean> get() = _loginResult
 
     private val _userCourses = MutableLiveData<List<Kisiler>>()
     val userCourses: LiveData<List<Kisiler>> get() = _userCourses
-
-    init {
-        firebaseAuth = FirebaseAuth.getInstance()
-    }
 
     fun registerUser(username: String, email: String, password: String) {
         viewModelScope.launch {

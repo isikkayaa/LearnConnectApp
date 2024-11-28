@@ -2,7 +2,7 @@
   "formatVersion": 1,
   "database": {
     "version": 5,
-    "identityHash": "6deedd0223455aa0fb62bf2e861bc162",
+    "identityHash": "5de8956dfa8443c59d5a5cacb00833d8",
     "entities": [
       {
         "tableName": "kisiler",
@@ -80,25 +80,37 @@
       },
       {
         "tableName": "kurslar",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`kurs_id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `kurs_isim` TEXT NOT NULL, `kurs_gorsel` TEXT)",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`kurs_id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `playlist_id` TEXT NOT NULL, `kurs_isim` TEXT NOT NULL, `kurs_aciklama` TEXT NOT NULL, `kurs_gorsel` TEXT NOT NULL)",
         "fields": [
           {
-            "fieldPath": "kurs_id",
+            "fieldPath": "kursId",
             "columnName": "kurs_id",
             "affinity": "INTEGER",
             "notNull": true
           },
           {
-            "fieldPath": "kurs_isim",
+            "fieldPath": "playlistId",
+            "columnName": "playlist_id",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "kursIsim",
             "columnName": "kurs_isim",
             "affinity": "TEXT",
             "notNull": true
           },
           {
-            "fieldPath": "kurs_gorsel",
+            "fieldPath": "kursAciklama",
+            "columnName": "kurs_aciklama",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "kursGorsel",
             "columnName": "kurs_gorsel",
             "affinity": "TEXT",
-            "notNull": false
+            "notNull": true
           }
         ],
         "primaryKey": {
@@ -252,7 +264,7 @@
       },
       {
         "tableName": "videos",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `course_id` INTEGER NOT NULL, `video_id` INTEGER NOT NULL, `video_title` TEXT NOT NULL, `video_url` TEXT NOT NULL)",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `video_id` TEXT NOT NULL, `course_id` INTEGER NOT NULL, `video_title` TEXT NOT NULL, `video_url` TEXT NOT NULL, `thumbnail_url` TEXT NOT NULL)",
         "fields": [
           {
             "fieldPath": "id",
@@ -261,14 +273,14 @@
             "notNull": true
           },
           {
-            "fieldPath": "courseId",
-            "columnName": "course_id",
-            "affinity": "INTEGER",
+            "fieldPath": "videoId",
+            "columnName": "video_id",
+            "affinity": "TEXT",
             "notNull": true
           },
           {
-            "fieldPath": "videoId",
-            "columnName": "video_id",
+            "fieldPath": "courseId",
+            "columnName": "course_id",
             "affinity": "INTEGER",
             "notNull": true
           },
@@ -281,6 +293,12 @@
           {
             "fieldPath": "videoUrl",
             "columnName": "video_url",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "thumbnailUrl",
+            "columnName": "thumbnail_url",
             "affinity": "TEXT",
             "notNull": true
           }
@@ -296,7 +314,7 @@
       },
       {
         "tableName": "video_progress",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `user_id` INTEGER NOT NULL, `course_id` INTEGER NOT NULL, `video_id` INTEGER NOT NULL, `progress` INTEGER NOT NULL)",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `user_id` INTEGER NOT NULL, `course_id` INTEGER NOT NULL, `video_id` TEXT NOT NULL, `progress` INTEGER NOT NULL)",
         "fields": [
           {
             "fieldPath": "id",
@@ -319,7 +337,7 @@
           {
             "fieldPath": "videoId",
             "columnName": "video_id",
-            "affinity": "INTEGER",
+            "affinity": "TEXT",
             "notNull": true
           },
           {
@@ -342,7 +360,7 @@
     "views": [],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '6deedd0223455aa0fb62bf2e861bc162')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '5de8956dfa8443c59d5a5cacb00833d8')"
     ]
   }
 }

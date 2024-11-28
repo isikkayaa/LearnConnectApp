@@ -18,11 +18,9 @@ import com.example.learnconnectapp.ui.fragment.ProfileFragmentDirections
 import com.example.learnconnectapp.ui.viewmodel.ProfileViewModel
 import com.example.learnconnectapp.util.gecisYap
 
-class CommentsAdapter(var mContext: Context, var yorumListesi : List<Comments>, var comments:List<Comments>, var viewModel: ProfileViewModel) : RecyclerView.Adapter<CommentsAdapter.CardCommentsTasarimTutucu>() {
-
+class CommentsAdapter(var mContext: Context, var yorumListesi : List<Comments>, var comments:List<Comments>, var viewModel: ProfileViewModel,var kurslarListesi: List<Kurslar>) : RecyclerView.Adapter<CommentsAdapter.CardCommentsTasarimTutucu>() {
 
     inner class CardCommentsTasarimTutucu(var tasarim : CardCommentsTasarimBinding) : RecyclerView.ViewHolder(tasarim.root)
-
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CardCommentsTasarimTutucu {
         val binding : CardCommentsTasarimBinding =  DataBindingUtil.inflate(
@@ -37,35 +35,18 @@ class CommentsAdapter(var mContext: Context, var yorumListesi : List<Comments>, 
         val t = holder.tasarim
 
         t.yorumNesnesi = yorum
-        val isRemoved = yorumListesi.any {it.courseTitle == yorum.courseTitle}
 
+        t.textView16.text = mContext.getString(R.string.basic)
+        t.imageView2.setImageResource(R.drawable.jetpack)
 
-        //  holder.tasarim.gorsel = yorum.imageLinks?????
-
-        holder.tasarim.textView16.text = yorum.courseTitle
 
         holder.tasarim.textView17.text = yorum.userComment
 
         t.ratingBar.rating = yorum.rating.toFloat()
 
 
-        if (yorum.courseImageUrl != null) {
-             Glide.with(mContext)
-                .load(yorum.courseImageUrl)
-                .placeholder(R.drawable.baseline_list_24)
-                .error(R.drawable.baseline_list_24)
-                .into(holder.tasarim.imageView2)
-
-        } else {
-            holder.tasarim.imageView2.setImageResource(R.drawable.baseline_download_24)
-        }
 
         t.cardViewComments.setOnClickListener {
-            val imageLinks = ImageLinks(
-                thumbnail = yorum.courseImageUrl?.thumbnail.toString(),
-                smallThumbnail = null
-            )
-
 
             val kurslar = Kurslar(
                 kurs_isim = yorum.courseTitle,
@@ -75,8 +56,7 @@ class CommentsAdapter(var mContext: Context, var yorumListesi : List<Comments>, 
 
 
                 val gecis = ProfileFragmentDirections.actionProfileFragment2ToCourseDetailFragment(
-                kurs = kurslar,
-                gorsel = imageLinks
+                kurs = kurslar
             )
 
             if (gecis != null) {
@@ -84,22 +64,6 @@ class CommentsAdapter(var mContext: Context, var yorumListesi : List<Comments>, 
             }
         }
 
-   /*     t.imageView8.setOnClickListener {
-            viewModel.removeFromComments(yorum.bookTitle) { success ->
-                if (success) {
-                    yorumListesi = yorumListesi.filter { it.bookTitle != yorum.bookTitle }
-                    Log.d("CommentsAdapter", "List updated. Remaining items: ${yorumListesi.size}")
-                    notifyDataSetChanged()  // Güncellemeyi bildir
-                    Snackbar.make(it, mContext.getString(R.string.remove_from_comments_success, yorum.bookTitle), Snackbar.LENGTH_SHORT).show()
-                } else {
-                    Snackbar.make(it, mContext.getString(R.string.remove_from_comments_fail), Snackbar.LENGTH_SHORT).show()
-                }
-            }
-        }
-
-
-
-    */
 
     }
 
@@ -118,17 +82,17 @@ class CommentsAdapter(var mContext: Context, var yorumListesi : List<Comments>, 
     }
 
 
-    fun updateBooks(newBooks: List<Comments>) {
+    fun updateCommentss(newCommentss: List<Comments>) {
         val oldList = yorumListesi
-        yorumListesi = newBooks
+        yorumListesi = newCommentss
         DiffUtil.calculateDiff(object : DiffUtil.Callback() {
             override fun getOldListSize() = oldList.size
-            override fun getNewListSize() = newBooks.size
+            override fun getNewListSize() = newCommentss.size
             override fun areItemsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
-                return oldList[oldItemPosition].courseTitle == newBooks[newItemPosition].courseTitle
+                return oldList[oldItemPosition].courseTitle == newCommentss[newItemPosition].courseTitle
             }
             override fun areContentsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
-                return oldList[oldItemPosition] == newBooks[newItemPosition]
+                return oldList[oldItemPosition] == newCommentss[newItemPosition]
             }
         }).dispatchUpdatesTo(this)
     }

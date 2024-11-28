@@ -13,8 +13,8 @@ import com.example.learnconnectapp.data.entity.Video
 interface KurslarDao {
 
 
-    @Query("SELECT * FROM kurslar WHERE kurs_id = :kursId ")
-    suspend fun kurslariYukle(kursId: Int) : List<Kurslar>
+    @Query("SELECT * FROM kurslar")
+    suspend fun kurslariYukle() : List<Kurslar>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertAll(kurslar: List<Kurslar>)
@@ -26,5 +26,10 @@ interface KurslarDao {
 
     @Query("SELECT * FROM currentlycourselist WHERE currently_kurs_id = :userId")
     suspend fun getCurrentlyCoursesByUser(userId: Int): List<CurrentlyCourseList>
+
+
+
+    @Query("SELECT * FROM kurslar WHERE kurs_id = :courseId")
+    suspend fun getCourseById(courseId: Int): Kurslar?
     }
 

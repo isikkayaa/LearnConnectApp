@@ -7,9 +7,7 @@
         <variable
             name="kursNesnesi"
             type="com.example.learnconnectapp.data.entity.Kurslar" />
-        <variable
-            name="gorsel"
-            type="com.example.learnconnectapp.data.entity.ImageLinks" />
+
 
     </data>
 
@@ -31,38 +29,38 @@
                 android:layout_width="match_parent"
                 android:layout_height="239dp"
                 android:layout_marginTop="13dp">
+
                 <TextView
                     android:id="@+id/textView8"
-                    android:layout_width="99dp"
-                    android:layout_height="18dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
+                    android:layout_marginTop="18dp"
                     android:fontFamily="@font/playfair_display"
                     android:text="@{kursNesnesi.kurs_isim != null ? kursNesnesi.kurs_isim : `Bilinmeyen Başlık`}"
                     app:layout_constraintStart_toStartOf="parent"
-                    tools:layout_editor_absoluteY="123dp" />
+                    app:layout_constraintTop_toBottomOf="@+id/imageViewKitapGorsel" />
+
 
                 <ImageView
                     android:id="@+id/imageViewKitapGorsel"
-                    android:layout_width="100dp"
-                    android:layout_height="101dp"
-                    android:layout_marginStart="16dp"
-                    app:imageUrl="@{gorsel.thumbnail}"
+                    android:layout_width="110dp"
+                    android:layout_height="157dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="12dp"
+                    app:imageResource="@{kursNesnesi.kurs_gorsel}"
                     app:layout_constraintStart_toStartOf="parent"
-                    tools:layout_editor_absoluteY="12dp" />
-
-
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <ImageView
                     android:id="@+id/imageViewkalpborder"
                     android:layout_width="24dp"
                     android:layout_height="31dp"
                     android:layout_marginTop="12dp"
-                    android:layout_marginEnd="16dp"
+                    android:layout_marginEnd="11dp"
                     android:src="@drawable/baseline_favorite_border_24"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
-
-
 
 
             </androidx.constraintlayout.widget.ConstraintLayout>
