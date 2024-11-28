@@ -62,9 +62,9 @@ Unit tests have been written for login and logout operations. These tests ensure
 |:----------------------------------------------------------------------:|:----------------------------------------------------------------------:|:----------------------------------------------------------------------:|
 |                        **HOMEPAGE**                                 |                             **NAVIGATION DRAWER**                              |                           **COURSE DETAIL PAGE**                      |
 
-|    <img src="screenshots/favs.png" alt="Screen7" width="300"/>        |      <img src="screenshots/profile.png" alt="Screen8" width="300"/>     |                                                                           
-|:----------------------------------------------------------------------:|:----------------------------------------------------------------------:|
-|                         **FAVOURITES PAGE**                           |                         **PROFILE PAGE**                                |                                                                            
+|       <img src="screenshots/comments.png" alt="Screen7" width="300"/>    |    <img src="screenshots/favs.png" alt="Screen8" width="300"/>        |      <img src="screenshots/profile.png" alt="Screen9" width="300"/>     |                                                                           
+|:----------------------------------------------------------------------:|:----------------------------------------------------------------------:|:-------------------------------------------------------------------------:|
+|                    **ADDING COMMENT AND RATING**                         |                           **FAVOURITES PAGE**                           |                         **PROFILE PAGE**                                |                                                                            
                                                                                                                          
          
 
