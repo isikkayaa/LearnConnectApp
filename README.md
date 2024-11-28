@@ -1,7 +1,7 @@
 # LearnConnectApp
 
 ## Project Overview
-LearnConnect is a modern video-based education platform that allows users to enroll in courses and watch lesson videos. This application offers various features to enhance user experience.
+LearnConnect is a modern video-based education platform that allows users to enroll in courses and watch lesson videos.
 
 ## Technologies Used
 - **Platform:** Android
@@ -56,5 +56,6 @@ Unit tests have been written for login and logout operations. These tests ensure
 I will add screenshots here.
 
 
-This README file provides an overview of the LearnConnect application’s functionalities and installation steps, helping you understand the project better. If you have any questions or feedback, please feel free to reach out to me. -> isikk428@gmail.com. :)
+This README file provides an overview of the LearnConnect application’s functionalities and installation steps.                    
+If you have any questions or feedback, please feel free to reach out to me. -> isikk428@gmail.com. :)
 Thank you so much!
